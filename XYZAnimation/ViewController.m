@@ -37,12 +37,11 @@
     CGPoint toPoint = CGPointMake(30, 360);
     [movePath addQuadCurveToPoint:toPoint
                      controlPoint:CGPointMake(300,0)];
-    
     [cirleLayer makeCAAnimation:^(XYZAnimationMaker *maker) {
-        maker.strokeEnd.from(@0).to(@1).inDuration(2).
-        then.lineWidth.from(@1).to(@10).inDuration(2).
-        with.position.withPath(movePath.CGPath).inDuration(3).
-        then.strokeStart.from(@0).to(@1).inDuration(2);
+        maker.strokeEnd.from(@0).to(@1).inDuration(2);
+        maker.lineWidth.from(@1).to(@10).inDuration(2)
+             .with.position.withPath(movePath.CGPath).inDuration(3);
+        maker.strokeStart.from(@0).to(@1).inDuration(2);
     }];
 }
 
