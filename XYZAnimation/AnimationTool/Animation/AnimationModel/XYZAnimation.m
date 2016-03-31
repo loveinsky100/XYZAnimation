@@ -7,6 +7,11 @@
 //
 
 #import "XYZAnimation.h"
+#import "XYZAnimationMaker.h"
+
+@interface XYZAnimation()
+
+@end
 
 @implementation XYZAnimation
 
@@ -120,4 +125,49 @@
     
     return maxDuration;
 }
+
+- (XYZAnimation * (^)(CGPathRef path))withPath
+{
+    return ^(CGPathRef path){
+        self.path = path;
+        return self;
+    };
+}
+
+- (XYZAnimation * (^)(NSValue *fromValue))from
+{
+    return ^(NSValue *fromValue){
+        self.fromValue = fromValue;
+        return self;
+    };
+}
+
+- (XYZAnimation * (^)(NSValue *toValue))to
+{
+    return ^(NSValue *toValue){
+        self.toValue = toValue;
+        return self;
+    };
+}
+
+- (XYZAnimation * (^)(CGFloat duration))inDuration
+{
+    return ^(CGFloat duration){
+        self.duration = duration;
+        return self;
+    };
+}
+
+- (XYZAnimationMaker *)with
+{
+    self.maker.isAddLastGroup = YES;
+    return self.maker;
+}
+
+- (XYZAnimationMaker *)then
+{
+    self.maker.isAddLastGroup = NO;
+    return self.maker;
+}
+
 @end
