@@ -7,6 +7,7 @@
 //
 
 #import "AnimationTool.h"
+#import "XYZAnimation.h"
 
 @interface AnimationTool()
 @property (nonatomic, strong) NSMutableArray<CAAnimation *> *animations;
@@ -36,24 +37,17 @@
 
 - (void)p_doAnimations:(CALayer *)animationLayer
 {
+    XYZAnimation *xyzAnimation1 = [XYZAnimation animationWithType:XYZAnimationStrokeEnd];
+    xyzAnimation1.fromValue = @0;
+    xyzAnimation1.toValue = @1;
+    xyzAnimation1.duration = 2;
+    xyzAnimation1.delegate = self;
     
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    animation.fromValue = @0;
-    animation.toValue = @1;
-    animation.duration = 2;
-    animation.fillMode = kCAFillModeForwards;
-    animation.autoreverses = NO;
-    animation.removedOnCompletion = NO;
-    animation.delegate = self;
-    
-    CABasicAnimation *animation2 = [CABasicAnimation animationWithKeyPath:@"lineWidth"];
-    animation2.fromValue = @1;
-    animation2.toValue = @10;
-    animation2.duration = 2;
-    animation2.fillMode = kCAFillModeForwards;
-    animation2.autoreverses = NO;
-    animation2.removedOnCompletion = NO;
-//    animation2.delegate = self;
+    XYZAnimation *xyzAnimation2 = [XYZAnimation animationWithType:XYZAnimationStrokeLineWidth];
+    xyzAnimation2.fromValue = @1;
+    xyzAnimation2.toValue = @10;
+    xyzAnimation2.duration = 2;
+    xyzAnimation2.delegate = self;
     
     //路径曲线
     CGPoint fromPoint = animationLayer.frame.origin;
@@ -64,38 +58,27 @@
                      controlPoint:CGPointMake(300,0)];
     
     //关键帧
-    CAKeyframeAnimation *animation3 = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    animation3.path = movePath.CGPath;
-    animation3.duration = 3;
-    animation3.fillMode = kCAFillModeForwards;
-    animation3.autoreverses = NO;
-    animation3.removedOnCompletion = NO;
+    XYZAnimation *xyzAnimation3 = [XYZAnimation animationWithType:XYZAnimationPosition];
+    xyzAnimation3.path = movePath.CGPath;
+    xyzAnimation3.duration = 3;
+    xyzAnimation3.delegate = self;
     
-    CABasicAnimation *animation4 = [CABasicAnimation animationWithKeyPath:@"strokeStart"];
-    animation4.fromValue = @0;
-    animation4.toValue = @1;
-    animation4.duration = 2;
-    animation4.fillMode = kCAFillModeForwards;
-    animation4.removedOnCompletion = NO;
-    animation4.delegate = self;
+    XYZAnimation *xyzAnimation4 = [XYZAnimation animationWithType:XYZAnimationStrokeStart];
+    xyzAnimation4.fromValue = @0;
+    xyzAnimation4.toValue = @1;
+    xyzAnimation4.duration = 2;
+    xyzAnimation4.delegate = self;
     
-    [animationLayer addAnimation:animation
+    [animationLayer addAnimation:xyzAnimation1.animation
                           forKey:@"positionAnimation"];
 
-    [self.animcations removeAllObjects];
-
-    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
-    animationGroup.duration = 3;
-    animationGroup.fillMode = kCAFillModeForwards;
-    animationGroup.removedOnCompletion = NO;
-    animationGroup.autoreverses = NO;
+    XYZAnimation *animationGroup = [[XYZAnimation alloc] init];
+    animationGroup.group = @[xyzAnimation2, xyzAnimation3];
     animationGroup.delegate = self;
-    animationGroup.animations = @[animation2, animation3];
     
-    [self.animcations addObject: animationGroup];
-    [self.animcations addObject: animation4];
-    
-    
+    [self.animcations removeAllObjects];
+    [self.animcations addObject: animationGroup.animation];
+    [self.animcations addObject: xyzAnimation4.animation];
 }
 
 - (NSMutableArray<CAAnimation *> *)animcations

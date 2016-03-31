@@ -14,6 +14,7 @@
 		B362B6301CACD4C000AD16C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B362B62F1CACD4C000AD16C9 /* Assets.xcassets */; };
 		B362B6331CACD4C000AD16C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B362B6311CACD4C000AD16C9 /* LaunchScreen.storyboard */; };
 		B362B6431CACD58000AD16C9 /* AnimationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6421CACD58000AD16C9 /* AnimationTool.m */; };
+		B362B6481CACEF2000AD16C9 /* XYZAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6471CACEF2000AD16C9 /* XYZAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		B362B6341CACD4C000AD16C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B362B6411CACD58000AD16C9 /* AnimationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationTool.h; path = AnimationTool/AnimationTool/AnimationTool.h; sourceTree = "<group>"; };
 		B362B6421CACD58000AD16C9 /* AnimationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationTool.m; path = AnimationTool/AnimationTool/AnimationTool.m; sourceTree = "<group>"; };
+		B362B6461CACEF2000AD16C9 /* XYZAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYZAnimation.h; path = AnimationTool/Animation/AnimationModel/XYZAnimation.h; sourceTree = "<group>"; };
+		B362B6471CACEF2000AD16C9 /* XYZAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYZAnimation.m; path = AnimationTool/Animation/AnimationModel/XYZAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,7 @@
 		B362B63A1CACD4E000AD16C9 /* AnimationTool */ = {
 			isa = PBXGroup;
 			children = (
+				B362B6441CACEE3900AD16C9 /* Animation */,
 				B362B6401CACD55200AD16C9 /* AnimationTool */,
 				B362B63F1CACD52300AD16C9 /* Category */,
 			);
@@ -106,6 +110,23 @@
 				B362B6421CACD58000AD16C9 /* AnimationTool.m */,
 			);
 			name = AnimationTool;
+			sourceTree = "<group>";
+		};
+		B362B6441CACEE3900AD16C9 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				B362B6451CACEEF400AD16C9 /* AnimationModel */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		B362B6451CACEEF400AD16C9 /* AnimationModel */ = {
+			isa = PBXGroup;
+			children = (
+				B362B6461CACEF2000AD16C9 /* XYZAnimation.h */,
+				B362B6471CACEF2000AD16C9 /* XYZAnimation.m */,
+			);
+			name = AnimationModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +201,7 @@
 			files = (
 				B362B6431CACD58000AD16C9 /* AnimationTool.m in Sources */,
 				B362B62B1CACD4C000AD16C9 /* ViewController.m in Sources */,
+				B362B6481CACEF2000AD16C9 /* XYZAnimation.m in Sources */,
 				B362B6281CACD4C000AD16C9 /* AppDelegate.m in Sources */,
 				B362B6251CACD4C000AD16C9 /* main.m in Sources */,
 			);
