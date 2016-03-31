@@ -9,15 +9,15 @@
 #import "AnimationTool.h"
 
 @interface AnimationTool()
-@property (nonatomic, strong) NSMutableArray<CAAnimation *> *animcations;
-@property (nonatomic, weak)   CALayer *animcationLayer;
+@property (nonatomic, strong) NSMutableArray<CAAnimation *> *animations;
+@property (nonatomic, weak)   CALayer *animationLayer;
 @end
 
 @implementation AnimationTool
-- (void)showAnimationWithLayer:(CALayer *)animcationLayer
+- (void)showAnimationWithLayer:(CALayer *)animationLayer
 {
-    [self p_doAnimations:animcationLayer];
-    self.animcationLayer = animcationLayer;
+    [self p_doAnimations:animationLayer];
+    self.animationLayer = animationLayer;
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -27,12 +27,14 @@
         return;
     }
     
-    NSString *animcationKey = [NSString stringWithFormat: @"Animcation%lu", (unsigned long)self.animcations.count];
-    [self.animcationLayer addAnimation:self.animcations[0] forKey:animcationKey];
+    NSInteger index = self.animations.count;
+    NSString *animationKey = [NSString stringWithFormat: @"Animation%ld", index];
+    [self.animationLayer addAnimation:self.animcations[0] forKey:animationKey];
+    
     [self.animcations removeObjectAtIndex: 0];
 }
 
-- (void)p_doAnimations:(CALayer *)animcationLayer
+- (void)p_doAnimations:(CALayer *)animationLayer
 {
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
@@ -51,10 +53,10 @@
     animation2.fillMode = kCAFillModeForwards;
     animation2.autoreverses = NO;
     animation2.removedOnCompletion = NO;
-    animation2.delegate = self;
+//    animation2.delegate = self;
     
     //路径曲线
-    CGPoint fromPoint = animcationLayer.frame.origin;
+    CGPoint fromPoint = animationLayer.frame.origin;
     UIBezierPath *movePath = [UIBezierPath bezierPath];
     [movePath moveToPoint:fromPoint];
     CGPoint toPoint = CGPointMake(30, 360);
@@ -68,7 +70,6 @@
     animation3.fillMode = kCAFillModeForwards;
     animation3.autoreverses = NO;
     animation3.removedOnCompletion = NO;
-    animation3.delegate = self;
     
     CABasicAnimation *animation4 = [CABasicAnimation animationWithKeyPath:@"strokeStart"];
     animation4.fromValue = @0;
@@ -76,24 +77,35 @@
     animation4.duration = 2;
     animation4.fillMode = kCAFillModeForwards;
     animation4.removedOnCompletion = NO;
+    animation4.delegate = self;
     
-    [animcationLayer addAnimation:animation
-                           forKey:@"positionAnimation"];
+    [animationLayer addAnimation:animation
+                          forKey:@"positionAnimation"];
 
     [self.animcations removeAllObjects];
-    [self.animcations addObject: animation2];
-    [self.animcations addObject: animation3];
+
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    animationGroup.duration = 3;
+    animationGroup.fillMode = kCAFillModeForwards;
+    animationGroup.removedOnCompletion = NO;
+    animationGroup.autoreverses = NO;
+    animationGroup.delegate = self;
+    animationGroup.animations = @[animation2, animation3];
+    
+    [self.animcations addObject: animationGroup];
     [self.animcations addObject: animation4];
+    
+    
 }
 
 - (NSMutableArray<CAAnimation *> *)animcations
 {
-    if(!_animcations)
+    if(!_animations)
     {
-        _animcations = [[NSMutableArray alloc] initWithCapacity:2];
+        _animations = [[NSMutableArray alloc] initWithCapacity:2];
     }
     
-    return _animcations;
+    return _animations;
 }
 
 

@@ -10,5 +10,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AnimationTool : NSObject
-- (void)showAnimationWithLayer:(CALayer *)animcationLayer;
+- (void)showAnimationWithLayer:(CALayer *)animationLayer;
 @end
