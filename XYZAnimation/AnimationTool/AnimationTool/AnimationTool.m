@@ -8,19 +8,18 @@
 
 #import "AnimationTool.h"
 #import "XYZAnimation.h"
-#import "XYZAnimationMaker.h"
 
 @interface AnimationTool()
 @property (nonatomic, strong) NSMutableArray<CAAnimation *> *animations;
 @property (nonatomic, weak)   CALayer *animationLayer;
-@property (nonatomic, strong) XYZAnimationMaker *maker;
 @end
 
 @implementation AnimationTool
-- (void)showAnimationWithLayer:(CALayer *)animationLayer
+
+- (void)showAnimationWithLayer:(CALayer *)animationLayer andAnimations:(NSArray<XYZAnimation *> *)animations
 {
     self.animationLayer = animationLayer;
-    [self p_doAnimations:animationLayer];
+    [self p_startAnimationWith: animations];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -35,23 +34,6 @@
     [self.animationLayer addAnimation:self.animations[0] forKey:animationKey];
     
     [self.animations removeObjectAtIndex: 0];
-}
-
-- (void)p_doAnimations:(CALayer *)animationLayer
-{
-    //路径曲线
-    CGPoint fromPoint = animationLayer.frame.origin;
-    UIBezierPath *movePath = [UIBezierPath bezierPath];
-    [movePath moveToPoint:fromPoint];
-    CGPoint toPoint = CGPointMake(30, 360);
-    [movePath addQuadCurveToPoint:toPoint
-                     controlPoint:CGPointMake(300,0)];
-    
-    self.maker.strokeEnd.from(@0).to(@1).inDuration(2).
-              then.lineWidth.from(@1).to(@10).inDuration(2).
-              with.position.withPath(movePath.CGPath).inDuration(3).
-              then.strokeStart.from(@0).to(@1).inDuration(2);
-    [self p_startAnimationWith: self.maker.animations];
 }
 
 - (void)p_startAnimationWith:(NSArray<XYZAnimation *> *)animations
@@ -82,15 +64,5 @@
     return _animations;
 }
 
-- (XYZAnimationMaker *)maker
-{
-    if(!_maker)
-    {
-        _maker = [[XYZAnimationMaker alloc] init];
-        _maker.delegate = self;
-    }
-    
-    return _maker;
-}
 
 @end

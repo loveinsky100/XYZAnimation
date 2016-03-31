@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class XYZAnimation;
 @interface AnimationTool : NSObject
-- (void)showAnimationWithLayer:(CALayer *)animationLayer;
+- (void)showAnimationWithLayer:(CALayer *)animationLayer
+                 andAnimations:(NSArray<XYZAnimation *> *)animations;
 @end

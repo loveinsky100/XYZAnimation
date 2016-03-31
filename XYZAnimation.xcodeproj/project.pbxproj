@@ -16,6 +16,7 @@
 		B362B6431CACD58000AD16C9 /* AnimationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6421CACD58000AD16C9 /* AnimationTool.m */; };
 		B362B6481CACEF2000AD16C9 /* XYZAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6471CACEF2000AD16C9 /* XYZAnimation.m */; };
 		B362B64C1CACFECA00AD16C9 /* XYZAnimationMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B64B1CACFECA00AD16C9 /* XYZAnimationMaker.m */; };
+		B362B64F1CAD155D00AD16C9 /* CALayer+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B64E1CAD155D00AD16C9 /* CALayer+XYZ.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		B362B6471CACEF2000AD16C9 /* XYZAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYZAnimation.m; path = AnimationTool/Animation/AnimationModel/XYZAnimation.m; sourceTree = "<group>"; };
 		B362B64A1CACFECA00AD16C9 /* XYZAnimationMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYZAnimationMaker.h; path = AnimationTool/Animation/AnimationMaker/XYZAnimationMaker.h; sourceTree = "<group>"; };
 		B362B64B1CACFECA00AD16C9 /* XYZAnimationMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYZAnimationMaker.m; path = AnimationTool/Animation/AnimationMaker/XYZAnimationMaker.m; sourceTree = "<group>"; };
+		B362B64D1CAD155D00AD16C9 /* CALayer+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+XYZ.h"; path = "AnimationTool/Category/CALayer+XYZ.h"; sourceTree = "<group>"; };
+		B362B64E1CAD155D00AD16C9 /* CALayer+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+XYZ.m"; path = "AnimationTool/Category/CALayer+XYZ.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 		B362B63F1CACD52300AD16C9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B362B64D1CAD155D00AD16C9 /* CALayer+XYZ.h */,
+				B362B64E1CAD155D00AD16C9 /* CALayer+XYZ.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				B362B6431CACD58000AD16C9 /* AnimationTool.m in Sources */,
 				B362B62B1CACD4C000AD16C9 /* ViewController.m in Sources */,
 				B362B6481CACEF2000AD16C9 /* XYZAnimation.m in Sources */,
+				B362B64F1CAD155D00AD16C9 /* CALayer+XYZ.m in Sources */,
 				B362B6281CACD4C000AD16C9 /* AppDelegate.m in Sources */,
 				B362B6251CACD4C000AD16C9 /* main.m in Sources */,
 				B362B64C1CACFECA00AD16C9 /* XYZAnimationMaker.m in Sources */,

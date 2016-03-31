@@ -21,15 +21,9 @@ typedef NS_ENUM(NSInteger, XYZAnimationType)
 @interface XYZAnimation : NSObject
 
 @property (nonatomic, weak)     XYZAnimationMaker *maker;
-@property (nonatomic, copy)     NSString *keyPath;
-@property (nonatomic, strong)   NSValue  *fromValue;
-@property (nonatomic, strong)   NSValue  *toValue;
-@property (nonatomic, assign)   BOOL     backToFirstState; // default is NO
 @property (nonatomic, weak)     NSObject *delegate;
-@property (nonatomic, assign)   CGFloat  duration;
-@property (nonatomic, strong)   NSMutableArray<XYZAnimation *> *group;
-@property (nonatomic, assign)   CGPathRef path;
 @property (nonatomic, weak)     XYZAnimation *animationGroup;
+@property (nonatomic, strong)   NSMutableArray<XYZAnimation *> *group;
 
 - (XYZAnimation * (^)(CGPathRef path))withPath;
 - (XYZAnimation * (^)(NSValue *fromValue))from;

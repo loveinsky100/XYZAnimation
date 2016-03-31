@@ -10,6 +10,12 @@
 #import "XYZAnimationMaker.h"
 
 @interface XYZAnimation()
+@property (nonatomic, copy)     NSString *keyPath;
+@property (nonatomic, strong)   NSValue  *fromValue;
+@property (nonatomic, strong)   NSValue  *toValue;
+@property (nonatomic, assign)   BOOL     backToFirstState; // default is NO
+@property (nonatomic, assign)   CGFloat  duration;
+@property (nonatomic, assign)   CGPathRef path;
 
 @end
 
