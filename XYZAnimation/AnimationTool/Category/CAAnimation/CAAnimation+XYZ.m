@@ -96,9 +96,14 @@ static void *CAAnimationFinishCallBackKey = "kCAAnimationFinishCallBackKey";
 {
     return ^(XYZCAAnimationFinishBlock finishCallBack){
         self.finishCallBack = finishCallBack;
-        Method realCopy = class_getInstanceMethod([self class], @selector(copyWithZone:));
-        Method xyzCopy = class_getInstanceMethod([self class], @selector(copyWithZoneAddition:));
-        method_exchangeImplementations(realCopy, xyzCopy);
+        
+        static dispatch_once_t xyzDispatchT;
+        dispatch_once(&xyzDispatchT, ^{
+            Method realCopy = class_getInstanceMethod([self class], @selector(copyWithZone:));
+            Method xyzCopy = class_getInstanceMethod([self class], @selector(copyWithZoneAddition:));
+            method_exchangeImplementations(realCopy, xyzCopy);
+        });
+        
         return self;
     };
 }

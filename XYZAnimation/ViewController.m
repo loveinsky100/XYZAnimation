@@ -53,7 +53,8 @@
              .inDuration(3)
              .withAutoreverses(NO)
              .withFillMode(kCAFillModeForwards)
-             .andRemoveOnCompletion(NO);
+             .andRemoveOnCompletion(NO)
+             .withFinishCallBack(^(){ NSLog(@"group finish"); });
         
         maker.basicAnimation
              .from(@0)
