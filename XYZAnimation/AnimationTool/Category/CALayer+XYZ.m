@@ -8,6 +8,7 @@
 
 #import "CALayer+XYZ.h"
 #import "objc/runtime.h"
+#import "CAAnimation+XYZ.h"
 
 static void *AnimationArrayKey = "kAnimationArrayKey";
 
@@ -55,6 +56,10 @@ static void *AnimationArrayKey = "kAnimationArrayKey";
     NSString *animationKey = [NSString stringWithFormat: @"Animation%ld", index];
     [self addAnimation:self.animations[0] forKey:animationKey];
     [self.animations removeObjectAtIndex: 0];
+    if(anim.finishCallBack)
+    {
+        anim.finishCallBack();
+    }
 }
 
 - (NSMutableArray *)animations

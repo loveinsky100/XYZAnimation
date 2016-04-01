@@ -68,6 +68,14 @@
     };
 }
 
+- (CAAnimation *(^)(CAAnimation *))addAnimation
+{
+    return ^(CAAnimation *animation){
+        [self addCAAnimation: animation];
+        return animation;
+    };
+}
+
 - (CABasicAnimation *)basicAnimation
 {
     CABasicAnimation *basicAnimation = [[CABasicAnimation alloc] init];

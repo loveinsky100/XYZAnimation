@@ -28,6 +28,15 @@
     cirleLayer.fillColor = [UIColor clearColor].CGColor;
     cirleLayer.strokeColor = [UIColor blueColor].CGColor;
     [self.view.layer addSublayer: cirleLayer];
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.fromValue = @0;
+    animation.toValue = @1;
+    animation.duration = 2;
+    animation.fillMode = kCAFillModeForwards;
+    animation.autoreverses = NO;
+    animation.removedOnCompletion = NO;
+    animation.delegate = self;
 
     //路径曲线
     CGPoint fromPoint = cirleLayer.frame.origin;
@@ -37,14 +46,8 @@
     [movePath addQuadCurveToPoint:toPoint
                      controlPoint:CGPointMake(300,0)];
     [cirleLayer makeCAAnimation:^(XYZAnimationMaker *maker) {
-        maker.basicAnimation
-             .from(@0)
-             .to(@1)
-             .withKeyPath(@"strokeEnd")
-             .inDuration(2)
-             .withAutoreverses(NO)
-             .withFillMode(kCAFillModeForwards)
-             .andRemoveOnCompletion(NO);
+        maker.addAnimation(animation)
+             .withFinishCallBack(^(){ NSLog(@"strokeEnd finish"); });
         
         maker.startGroup
              .inDuration(3)

@@ -9,6 +9,8 @@
 #import "CAAnimation+XYZ.h"
 #import "objc/runtime.h"
 
+static void *CAAnimationFinishCallBackKey = "kCAAnimationFinishCallBackKey";
+
 @implementation CAAnimation(XYZ)
 - (CAAnimation *(^)(CFTimeInterval))beginAtTime
 {
@@ -88,6 +90,34 @@
         self.removedOnCompletion = removedOnCompletion;
         return self;
     };
+}
+
+- (CAAnimation *(^)(XYZCAAnimationFinishBlock))withFinishCallBack
+{
+    return ^(XYZCAAnimationFinishBlock finishCallBack){
+        self.finishCallBack = finishCallBack;
+        Method realCopy = class_getInstanceMethod([self class], @selector(copyWithZone:));
+        Method xyzCopy = class_getInstanceMethod([self class], @selector(copyWithZoneAddition:));
+        method_exchangeImplementations(realCopy, xyzCopy);
+        return self;
+    };
+}
+
+- (XYZCAAnimationFinishBlock)finishCallBack
+{
+    return objc_getAssociatedObject(self, CAAnimationFinishCallBackKey);
+}
+
+- (void)setFinishCallBack:(XYZCAAnimationFinishBlock)finishCallBack
+{
+    objc_setAssociatedObject(self, CAAnimationFinishCallBackKey, finishCallBack, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (id)copyWithZoneAddition:(NSZone *)zone
+{
+    CAAnimation *animation = [self copyWithZoneAddition: zone];
+    animation.finishCallBack = self.finishCallBack;
+    return animation;
 }
 
 @end

@@ -15,6 +15,8 @@
 
 - (instancetype)initWithLayer:(CALayer *)layer;
 
+- (CAAnimation *(^)(CAAnimation *))addAnimation;
+
 - (CAAnimationGroup *)startGroup;
 - (void (^)())endGroup;
 
