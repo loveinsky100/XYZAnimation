@@ -1,7 +1,7 @@
 # XYZAnimation
 Start CAAnimation with Chain programming!
 
-If you want to use CAAnimation to create an Sequential Animation,user CAAnimation you mayer write this code:
+If you want to use CAAnimation to create an Sequential Animation, you may write code like this:
 
 ```
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
