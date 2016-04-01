@@ -9,8 +9,6 @@
 #import "CAAnimation+XYZ.h"
 #import "objc/runtime.h"
 
-static void *CAAnimationGroupKey = @"kCAAnimationGroupKey";
-
 @implementation CAAnimation(XYZ)
 - (CAAnimation *(^)(CFTimeInterval))beginAtTime
 {
@@ -90,22 +88,6 @@ static void *CAAnimationGroupKey = @"kCAAnimationGroupKey";
         self.removedOnCompletion = removedOnCompletion;
         return self;
     };
-}
-
-- (CAAnimationGroup *)animationGroup
-{
-    CAAnimationGroup *group = objc_getAssociatedObject(self, CAAnimationGroupKey);
-    if(group && [group isKindOfClass: [CAAnimationGroup class]])
-    {
-        return group;
-    }
-    
-    return nil;
-}
-
-- (void)setAnimationTool:(CAAnimationGroup *)animationGroup
-{
-    objc_setAssociatedObject(self, CAAnimationGroupKey, animationGroup, OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end

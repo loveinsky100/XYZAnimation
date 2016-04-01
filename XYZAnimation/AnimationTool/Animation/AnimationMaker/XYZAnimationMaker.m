@@ -16,7 +16,6 @@
 #import "CATransition+XYZ.h"
 
 @interface XYZAnimationMaker()
-@property (nonatomic, assign) BOOL isAddLastGroup;
 @property (nonatomic, weak) id delegate;
 @property (nonatomic, strong) NSMutableArray<CAAnimation *> *animations;
 @property (nonatomic, strong) NSMutableArray<CAAnimationGroup *> *groups;
