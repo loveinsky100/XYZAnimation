@@ -2,6 +2,7 @@
 Start CAAnimation with Chain programming!
 
 If you want to use CAAnimation to create an Sequential Animation, you may write code like this:
+![image](http://c.hiphotos.baidu.com/image/pic/item/55e736d12f2eb938793dd54dd2628535e5dd6f39.jpg)
 
 ```
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
