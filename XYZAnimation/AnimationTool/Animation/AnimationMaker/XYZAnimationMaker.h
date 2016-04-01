@@ -6,16 +6,18 @@
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class XYZAnimation;
 @interface XYZAnimationMaker : NSObject
-@property (nonatomic, weak) id delegate;
-@property (nonatomic, assign) BOOL isAddLastGroup;
-@property (nonatomic, strong, readonly) NSMutableArray<XYZAnimation *> *animations;
 
-- (XYZAnimation *)position;
-- (XYZAnimation *)strokeEnd;
-- (XYZAnimation *)strokeStart;
-- (XYZAnimation *)lineWidth;
+@property (nonatomic, strong, readonly) NSMutableArray<CAAnimation *> *animations;
+
+- (instancetype)initWithLayer:(CALayer *)layer;
+
+- (CAAnimationGroup *)startGroup;
+- (void (^)())endGroup;
+
+- (CABasicAnimation *)basicAnimation;
+- (CAKeyframeAnimation *)keyframeAnimation;
 @end

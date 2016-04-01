@@ -9,32 +9,62 @@
 #import "CALayer+XYZ.h"
 #import "objc/runtime.h"
 
-static void *AnimationToolKey = "kAnimationToolKey";
+static void *AnimationArrayKey = "kAnimationArrayKey";
 
 @implementation CALayer(XYZ)
 
 - (void)makeCAAnimation:(void (^)(XYZAnimationMaker *))makerBlock
 {
-    if(!self.animationTool)
+    if(!self.animations)
     {
-        self.animationTool = [[AnimationTool alloc] init];
+        self.animations = [NSMutableArray array];
     }
     
-    XYZAnimationMaker *maker = [[XYZAnimationMaker alloc] init];
-    maker.delegate = self.animationTool;
+    [self.animations removeAllObjects];
+    XYZAnimationMaker *maker = [[XYZAnimationMaker alloc] initWithLayer: self];
     makerBlock(maker);
-    [self.animationTool showAnimationWithLayer:self
-                                 andAnimations:maker.animations];
+    self.animations = maker.animations;
+    [self showAnimations];
 }
 
-- (AnimationTool *)animationTool
+- (void)showAnimations
 {
-    return objc_getAssociatedObject(self, AnimationToolKey);
+    if(!self.animations || ![self.animations isKindOfClass:[NSArray class]])
+    {
+        return;
+    }
+    
+    if(!self.animations.count)
+    {
+        return;
+    }
+    
+    [self addAnimation: self.animations.firstObject
+                forKey: @"Animation"];
+    [self.animations removeObjectAtIndex: 0];
 }
 
-- (void)setAnimationTool:(AnimationTool *)animationTool
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    objc_setAssociatedObject(self, AnimationToolKey, animationTool, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if(self.animations.count == 0)
+    {
+        return;
+    }
+    
+    NSInteger index = self.animations.count;
+    NSString *animationKey = [NSString stringWithFormat: @"Animation%ld", index];
+    [self addAnimation:self.animations[0] forKey:animationKey];
+    [self.animations removeObjectAtIndex: 0];
+}
+
+- (NSMutableArray *)animations
+{
+    return objc_getAssociatedObject(self, AnimationArrayKey);
+}
+
+- (void)setAnimations:(NSMutableArray *)animations
+{
+    objc_setAssociatedObject(self, AnimationArrayKey, animations, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

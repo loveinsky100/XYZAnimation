@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "XYZAnimationMaker.h"
-#import "AnimationTool.h"
-#import "XYZAnimation.h"
 
 @interface CALayer(XYZ)
 - (void)makeCAAnimation:(void (^)(XYZAnimationMaker *maker))makerBlock;

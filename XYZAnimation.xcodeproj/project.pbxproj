@@ -13,10 +13,15 @@
 		B362B62E1CACD4C000AD16C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B362B62C1CACD4C000AD16C9 /* Main.storyboard */; };
 		B362B6301CACD4C000AD16C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B362B62F1CACD4C000AD16C9 /* Assets.xcassets */; };
 		B362B6331CACD4C000AD16C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B362B6311CACD4C000AD16C9 /* LaunchScreen.storyboard */; };
-		B362B6431CACD58000AD16C9 /* AnimationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6421CACD58000AD16C9 /* AnimationTool.m */; };
-		B362B6481CACEF2000AD16C9 /* XYZAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6471CACEF2000AD16C9 /* XYZAnimation.m */; };
 		B362B64C1CACFECA00AD16C9 /* XYZAnimationMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B64B1CACFECA00AD16C9 /* XYZAnimationMaker.m */; };
 		B362B64F1CAD155D00AD16C9 /* CALayer+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B64E1CAD155D00AD16C9 /* CALayer+XYZ.m */; };
+		B362B6541CAE112C00AD16C9 /* CAAnimation+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6531CAE112C00AD16C9 /* CAAnimation+XYZ.m */; };
+		B362B6581CAE118100AD16C9 /* CAPropertyAnimation+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6571CAE118100AD16C9 /* CAPropertyAnimation+XYZ.m */; };
+		B362B65C1CAE124D00AD16C9 /* CABasicAnimation+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B65B1CAE124D00AD16C9 /* CABasicAnimation+XYZ.m */; };
+		B362B6601CAE16DB00AD16C9 /* CAKeyframeAnimation+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B65F1CAE16DB00AD16C9 /* CAKeyframeAnimation+XYZ.m */; };
+		B362B6641CAE195E00AD16C9 /* CASpringAnimation+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B6631CAE195E00AD16C9 /* CASpringAnimation+XYZ.m */; };
+		B362B66B1CAE1AD400AD16C9 /* CATransition+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B66A1CAE1AD400AD16C9 /* CATransition+XYZ.m */; };
+		B362B66F1CAE1C7E00AD16C9 /* CAAnimationGroup+XYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B362B66E1CAE1C7E00AD16C9 /* CAAnimationGroup+XYZ.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,14 +35,25 @@
 		B362B62F1CACD4C000AD16C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B362B6321CACD4C000AD16C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B362B6341CACD4C000AD16C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B362B6411CACD58000AD16C9 /* AnimationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationTool.h; path = AnimationTool/AnimationTool/AnimationTool.h; sourceTree = "<group>"; };
-		B362B6421CACD58000AD16C9 /* AnimationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationTool.m; path = AnimationTool/AnimationTool/AnimationTool.m; sourceTree = "<group>"; };
-		B362B6461CACEF2000AD16C9 /* XYZAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYZAnimation.h; path = AnimationTool/Animation/AnimationModel/XYZAnimation.h; sourceTree = "<group>"; };
-		B362B6471CACEF2000AD16C9 /* XYZAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYZAnimation.m; path = AnimationTool/Animation/AnimationModel/XYZAnimation.m; sourceTree = "<group>"; };
 		B362B64A1CACFECA00AD16C9 /* XYZAnimationMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYZAnimationMaker.h; path = AnimationTool/Animation/AnimationMaker/XYZAnimationMaker.h; sourceTree = "<group>"; };
 		B362B64B1CACFECA00AD16C9 /* XYZAnimationMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYZAnimationMaker.m; path = AnimationTool/Animation/AnimationMaker/XYZAnimationMaker.m; sourceTree = "<group>"; };
 		B362B64D1CAD155D00AD16C9 /* CALayer+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+XYZ.h"; path = "AnimationTool/Category/CALayer+XYZ.h"; sourceTree = "<group>"; };
 		B362B64E1CAD155D00AD16C9 /* CALayer+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+XYZ.m"; path = "AnimationTool/Category/CALayer+XYZ.m"; sourceTree = "<group>"; };
+		B362B6521CAE112C00AD16C9 /* CAAnimation+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+XYZ.h"; path = "AnimationTool/Category/CAAnimation/CAAnimation+XYZ.h"; sourceTree = "<group>"; };
+		B362B6531CAE112C00AD16C9 /* CAAnimation+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAAnimation+XYZ.m"; path = "AnimationTool/Category/CAAnimation/CAAnimation+XYZ.m"; sourceTree = "<group>"; };
+		B362B6561CAE118100AD16C9 /* CAPropertyAnimation+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAPropertyAnimation+XYZ.h"; path = "AnimationTool/Category/CAAnimation/CAPropertyAnimation/CAPropertyAnimation+XYZ.h"; sourceTree = "<group>"; };
+		B362B6571CAE118100AD16C9 /* CAPropertyAnimation+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAPropertyAnimation+XYZ.m"; path = "AnimationTool/Category/CAAnimation/CAPropertyAnimation/CAPropertyAnimation+XYZ.m"; sourceTree = "<group>"; };
+		B362B65A1CAE124D00AD16C9 /* CABasicAnimation+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CABasicAnimation+XYZ.h"; path = "AnimationTool/Category/CAAnimation/CAPropertyAnimation/CABasicAnimation/CABasicAnimation+XYZ.h"; sourceTree = "<group>"; };
+		B362B65B1CAE124D00AD16C9 /* CABasicAnimation+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CABasicAnimation+XYZ.m"; path = "AnimationTool/Category/CAAnimation/CAPropertyAnimation/CABasicAnimation/CABasicAnimation+XYZ.m"; sourceTree = "<group>"; };
+		B362B65E1CAE16DB00AD16C9 /* CAKeyframeAnimation+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAKeyframeAnimation+XYZ.h"; path = "AnimationTool/Category/CAAnimation/CAPropertyAnimation/CAKeyframeAnimation/CAKeyframeAnimation+XYZ.h"; sourceTree = "<group>"; };
+		B362B65F1CAE16DB00AD16C9 /* CAKeyframeAnimation+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAKeyframeAnimation+XYZ.m"; path = "AnimationTool/Category/CAAnimation/CAPropertyAnimation/CAKeyframeAnimation/CAKeyframeAnimation+XYZ.m"; sourceTree = "<group>"; };
+		B362B6621CAE195E00AD16C9 /* CASpringAnimation+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CASpringAnimation+XYZ.h"; path = "AnimationTool/Category/CAAnimation/CAPropertyAnimation/CABasicAnimation/CASpringAnimation+XYZ.h"; sourceTree = "<group>"; };
+		B362B6631CAE195E00AD16C9 /* CASpringAnimation+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CASpringAnimation+XYZ.m"; path = "AnimationTool/Category/CAAnimation/CAPropertyAnimation/CABasicAnimation/CASpringAnimation+XYZ.m"; sourceTree = "<group>"; };
+		B362B6691CAE1AD400AD16C9 /* CATransition+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CATransition+XYZ.h"; path = "AnimationTool/Category/CAAnimation/CATransition/CATransition+XYZ.h"; sourceTree = "<group>"; };
+		B362B66A1CAE1AD400AD16C9 /* CATransition+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CATransition+XYZ.m"; path = "AnimationTool/Category/CAAnimation/CATransition/CATransition+XYZ.m"; sourceTree = "<group>"; };
+		B362B66D1CAE1C7E00AD16C9 /* CAAnimationGroup+XYZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAAnimationGroup+XYZ.h"; path = "AnimationTool/Category/CAAnimation/CAAnimationGroup/CAAnimationGroup+XYZ.h"; sourceTree = "<group>"; };
+		B362B66E1CAE1C7E00AD16C9 /* CAAnimationGroup+XYZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAAnimationGroup+XYZ.m"; path = "AnimationTool/Category/CAAnimation/CAAnimationGroup/CAAnimationGroup+XYZ.m"; sourceTree = "<group>"; };
+		B362B6711CAE278700AD16C9 /* XYZAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XYZAnimation.h; path = AnimationTool/XYZAnimation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				B362B6441CACEE3900AD16C9 /* Animation */,
-				B362B6401CACD55200AD16C9 /* AnimationTool */,
 				B362B63F1CACD52300AD16C9 /* Category */,
+				B362B6711CAE278700AD16C9 /* XYZAnimation.h */,
 			);
 			name = AnimationTool;
 			sourceTree = "<group>";
@@ -105,37 +121,19 @@
 		B362B63F1CACD52300AD16C9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B362B6511CAE110800AD16C9 /* CAAnimation */,
 				B362B64D1CAD155D00AD16C9 /* CALayer+XYZ.h */,
 				B362B64E1CAD155D00AD16C9 /* CALayer+XYZ.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
 		};
-		B362B6401CACD55200AD16C9 /* AnimationTool */ = {
-			isa = PBXGroup;
-			children = (
-				B362B6411CACD58000AD16C9 /* AnimationTool.h */,
-				B362B6421CACD58000AD16C9 /* AnimationTool.m */,
-			);
-			name = AnimationTool;
-			sourceTree = "<group>";
-		};
 		B362B6441CACEE3900AD16C9 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
 				B362B6491CACFEAB00AD16C9 /* AnimationMaker */,
-				B362B6451CACEEF400AD16C9 /* AnimationModel */,
 			);
 			name = Animation;
-			sourceTree = "<group>";
-		};
-		B362B6451CACEEF400AD16C9 /* AnimationModel */ = {
-			isa = PBXGroup;
-			children = (
-				B362B6461CACEF2000AD16C9 /* XYZAnimation.h */,
-				B362B6471CACEF2000AD16C9 /* XYZAnimation.m */,
-			);
-			name = AnimationModel;
 			sourceTree = "<group>";
 		};
 		B362B6491CACFEAB00AD16C9 /* AnimationMaker */ = {
@@ -145,6 +143,75 @@
 				B362B64B1CACFECA00AD16C9 /* XYZAnimationMaker.m */,
 			);
 			name = AnimationMaker;
+			sourceTree = "<group>";
+		};
+		B362B6511CAE110800AD16C9 /* CAAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				B362B66C1CAE1C6700AD16C9 /* CAAnimationGroup */,
+				B362B6651CAE1AA900AD16C9 /* CATransition */,
+				B362B6551CAE116F00AD16C9 /* CAPropertyAnimation */,
+				B362B6521CAE112C00AD16C9 /* CAAnimation+XYZ.h */,
+				B362B6531CAE112C00AD16C9 /* CAAnimation+XYZ.m */,
+			);
+			name = CAAnimation;
+			sourceTree = "<group>";
+		};
+		B362B6551CAE116F00AD16C9 /* CAPropertyAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				B362B65D1CAE16C600AD16C9 /* CAKeyframeAnimation */,
+				B362B6591CAE123B00AD16C9 /* CABasicAnimation */,
+				B362B6561CAE118100AD16C9 /* CAPropertyAnimation+XYZ.h */,
+				B362B6571CAE118100AD16C9 /* CAPropertyAnimation+XYZ.m */,
+			);
+			name = CAPropertyAnimation;
+			sourceTree = "<group>";
+		};
+		B362B6591CAE123B00AD16C9 /* CABasicAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				B362B6611CAE194A00AD16C9 /* CASpringAnimation */,
+				B362B65A1CAE124D00AD16C9 /* CABasicAnimation+XYZ.h */,
+				B362B65B1CAE124D00AD16C9 /* CABasicAnimation+XYZ.m */,
+			);
+			name = CABasicAnimation;
+			sourceTree = "<group>";
+		};
+		B362B65D1CAE16C600AD16C9 /* CAKeyframeAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				B362B65E1CAE16DB00AD16C9 /* CAKeyframeAnimation+XYZ.h */,
+				B362B65F1CAE16DB00AD16C9 /* CAKeyframeAnimation+XYZ.m */,
+			);
+			name = CAKeyframeAnimation;
+			sourceTree = "<group>";
+		};
+		B362B6611CAE194A00AD16C9 /* CASpringAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				B362B6621CAE195E00AD16C9 /* CASpringAnimation+XYZ.h */,
+				B362B6631CAE195E00AD16C9 /* CASpringAnimation+XYZ.m */,
+			);
+			name = CASpringAnimation;
+			sourceTree = "<group>";
+		};
+		B362B6651CAE1AA900AD16C9 /* CATransition */ = {
+			isa = PBXGroup;
+			children = (
+				B362B6691CAE1AD400AD16C9 /* CATransition+XYZ.h */,
+				B362B66A1CAE1AD400AD16C9 /* CATransition+XYZ.m */,
+			);
+			name = CATransition;
+			sourceTree = "<group>";
+		};
+		B362B66C1CAE1C6700AD16C9 /* CAAnimationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				B362B66D1CAE1C7E00AD16C9 /* CAAnimationGroup+XYZ.h */,
+				B362B66E1CAE1C7E00AD16C9 /* CAAnimationGroup+XYZ.m */,
+			);
+			name = CAAnimationGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,12 +284,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B362B6431CACD58000AD16C9 /* AnimationTool.m in Sources */,
 				B362B62B1CACD4C000AD16C9 /* ViewController.m in Sources */,
-				B362B6481CACEF2000AD16C9 /* XYZAnimation.m in Sources */,
+				B362B6641CAE195E00AD16C9 /* CASpringAnimation+XYZ.m in Sources */,
 				B362B64F1CAD155D00AD16C9 /* CALayer+XYZ.m in Sources */,
+				B362B6601CAE16DB00AD16C9 /* CAKeyframeAnimation+XYZ.m in Sources */,
 				B362B6281CACD4C000AD16C9 /* AppDelegate.m in Sources */,
+				B362B65C1CAE124D00AD16C9 /* CABasicAnimation+XYZ.m in Sources */,
+				B362B6581CAE118100AD16C9 /* CAPropertyAnimation+XYZ.m in Sources */,
 				B362B6251CACD4C000AD16C9 /* main.m in Sources */,
+				B362B66F1CAE1C7E00AD16C9 /* CAAnimationGroup+XYZ.m in Sources */,
+				B362B66B1CAE1AD400AD16C9 /* CATransition+XYZ.m in Sources */,
+				B362B6541CAE112C00AD16C9 /* CAAnimation+XYZ.m in Sources */,
 				B362B64C1CACFECA00AD16C9 /* XYZAnimationMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +444,7 @@
 				B362B6391CACD4C000AD16C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

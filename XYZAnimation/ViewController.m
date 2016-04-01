@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "AnimationTool.h"
-#import "CALayer+XYZ.h"
+#import "XYZAnimation.h"
 
 @interface ViewController ()
 @end
@@ -38,10 +37,48 @@
     [movePath addQuadCurveToPoint:toPoint
                      controlPoint:CGPointMake(300,0)];
     [cirleLayer makeCAAnimation:^(XYZAnimationMaker *maker) {
-        maker.strokeEnd.from(@0).to(@1).inDuration(2);
-        maker.lineWidth.from(@1).to(@10).inDuration(2)
-             .with.position.withPath(movePath.CGPath).inDuration(3);
-        maker.strokeStart.from(@0).to(@1).inDuration(2);
+        maker.basicAnimation
+             .from(@0)
+             .to(@1)
+             .withKeyPath(@"strokeEnd")
+             .inDuration(2)
+             .withAutoreverses(NO)
+             .withFillMode(kCAFillModeForwards)
+             .andRemoveOnCompletion(NO);
+        
+        maker.startGroup
+             .inDuration(3)
+             .withAutoreverses(NO)
+             .withFillMode(kCAFillModeForwards)
+             .andRemoveOnCompletion(NO);
+        
+        maker.basicAnimation
+             .from(@0)
+             .to(@10)
+             .withKeyPath(@"lineWidth")
+             .inDuration(2)
+             .withAutoreverses(NO)
+             .withFillMode(kCAFillModeForwards)
+             .andRemoveOnCompletion(NO);
+        
+        maker.keyframeAnimation
+             .withPath(movePath.CGPath)
+             .withKeyPath(@"position")
+             .inDuration(3)
+             .withAutoreverses(NO)
+             .withFillMode(kCAFillModeForwards)
+             .andRemoveOnCompletion(NO);
+        
+        maker.endGroup();
+        
+        maker.basicAnimation
+             .from(@0)
+             .to(@1)
+             .withKeyPath(@"strokeStart")
+             .inDuration(2)
+             .withAutoreverses(NO)
+             .withFillMode(kCAFillModeForwards)
+             .andRemoveOnCompletion(NO);
     }];
 }
 

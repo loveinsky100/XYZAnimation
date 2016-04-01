@@ -7,96 +7,83 @@
 //
 
 #import "XYZAnimationMaker.h"
-#import "XYZAnimation.h"
+#import "CAAnimation+XYZ.h"
+#import "CAAnimationGroup+XYZ.h"
+#import "CABasicAnimation+XYZ.h"
+#import "CAKeyframeAnimation+XYZ.h"
+#import "CAPropertyAnimation+XYZ.h"
+#import "CASpringAnimation+XYZ.h"
+#import "CATransition+XYZ.h"
 
 @interface XYZAnimationMaker()
-@property (nonatomic, strong) NSMutableArray<XYZAnimation *> *animations;
+@property (nonatomic, assign) BOOL isAddLastGroup;
+@property (nonatomic, weak) id delegate;
+@property (nonatomic, strong) NSMutableArray<CAAnimation *> *animations;
+@property (nonatomic, strong) NSMutableArray<CAAnimationGroup *> *groups;
 @end
 
 @implementation XYZAnimationMaker
 
-- (XYZAnimation *)p_animationWithType:(XYZAnimationType)animationType
+- (instancetype)initWithLayer:(CALayer *)layer
 {
-    XYZAnimation *animation = [XYZAnimation animationWithType: animationType];
-    animation.maker = self;
-    animation.delegate = self.delegate;
-    if(self.isAddLastGroup)
+    if(self = [super init])
     {
-        [self p_addAnimationInLastGroup: animation];
-        self.isAddLastGroup = NO;
+        self.delegate = layer;
+    }
+    
+    return self;
+}
+
+- (void)addCAAnimation:(CAAnimation *)animation
+{
+    if(self.groups && self.groups.count)
+    {
+        CAAnimationGroup *group = self.groups.lastObject;
+        [group addAnimation: animation];
     }
     else
     {
+        animation.delegate = self.delegate;
         [self.animations addObject: animation];
     }
-    
-    return animation;
 }
 
-- (XYZAnimation *)p_creatAnimationGroup
+- (CAAnimationGroup *)startGroup
 {
-    XYZAnimation *animation = [[XYZAnimation alloc] init];
-    animation.group = [NSMutableArray array];
-    animation.delegate = self.delegate;
-    [self.animations addObject: animation];
-    return animation;
+    CAAnimationGroup *group = [[CAAnimationGroup alloc] init];
+    group.delegate = self.delegate;
+    [self addCAAnimation: group];
+    [self.groups addObject: group];
+    return group;
 }
 
-- (void)p_addAnimationInLastGroup:(XYZAnimation *)animation
+- (void (^)())endGroup
 {
-    XYZAnimation *anim = self.animations.lastObject;
-    if(!anim)
-    {
-        XYZAnimation *group = [self p_creatAnimationGroup];
-        [group.group addObject: animation];
-        animation.animationGroup = group;
-        
-    }
-    else if(anim.animationGroup)
-    {
-        [animation.animationGroup.group addObject: animation];
-        anim.animationGroup = animation.animationGroup;
-    }
-    else if(!anim.animationGroup)
-    {
-        XYZAnimation *animationGroup = [[XYZAnimation alloc] init];
-        animationGroup.delegate = self.delegate;
-        animationGroup.group = [NSMutableArray array];
-        [self.animations removeLastObject];
-        [self.animations addObject: animationGroup];
-        [animationGroup.group addObject: anim];
-        [animationGroup.group addObject: animation];
-        anim.animationGroup = animationGroup;
-        animation.animationGroup = animationGroup;
-    }
+    return ^(){
+        if(self.groups && self.groups.count)
+        {
+            CAAnimationGroup *group = self.groups.lastObject;
+            [group joinAnimationIntoGroup];
+            [self.groups removeLastObject];
+        }
+    };
 }
 
-- (void)p_removeAnimation:(XYZAnimation *)animation
+- (CABasicAnimation *)basicAnimation
 {
-    [self.animations removeObject: animation];
+    CABasicAnimation *basicAnimation = [[CABasicAnimation alloc] init];
+    [self addCAAnimation: basicAnimation];
+    return basicAnimation;
 }
 
-- (XYZAnimation *)position
+- (CAKeyframeAnimation *)keyframeAnimation
 {
-    return [self p_animationWithType: XYZAnimationPosition];
+    CAKeyframeAnimation *keyframeAnimation = [[CAKeyframeAnimation alloc] init];
+    [self addCAAnimation: keyframeAnimation];
+    return keyframeAnimation;
 }
 
-- (XYZAnimation *)strokeEnd
-{
-    return [self p_animationWithType: XYZAnimationStrokeEnd];
-}
-
-- (XYZAnimation *)strokeStart
-{
-   return [self p_animationWithType: XYZAnimationStrokeStart];
-}
-
-- (XYZAnimation *)lineWidth
-{
-    return [self p_animationWithType: XYZAnimationStrokeLineWidth];
-}
-
-- (NSMutableArray<XYZAnimation *> *)animations
+- (NSMutableArray<CAAnimation *> *)animations
 {
     if(!_animations)
     {
@@ -104,6 +91,16 @@
     }
     
     return _animations;
+}
+
+- (NSMutableArray<CAAnimationGroup *> *)groups
+{
+    if(!_groups)
+    {
+        _groups = [[NSMutableArray alloc] init];
+    }
+    
+    return _groups;
 }
 
 @end
