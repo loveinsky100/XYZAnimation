@@ -35,6 +35,7 @@
 
 - (void)addCAAnimation:(CAAnimation *)animation
 {
+    animation.delegate = self.delegate;
     if(self.groups && self.groups.count)
     {
         CAAnimationGroup *group = self.groups.lastObject;
@@ -42,7 +43,6 @@
     }
     else
     {
-        animation.delegate = self.delegate;
         [self.animations addObject: animation];
     }
 }

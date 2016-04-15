@@ -10,6 +10,7 @@
 #import "objc/runtime.h"
 
 static void *CAAnimationFinishCallBackKey = "kCAAnimationFinishCallBackKey";
+static void *CAAnimationIsInGroupKey = "kCAAnimationIsInGroupKey";
 
 @implementation CAAnimation(XYZ)
 - (CAAnimation *(^)(CFTimeInterval))beginAtTime
@@ -118,10 +119,22 @@ static void *CAAnimationFinishCallBackKey = "kCAAnimationFinishCallBackKey";
     objc_setAssociatedObject(self, CAAnimationFinishCallBackKey, finishCallBack, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
+- (void)setIsInGroup:(BOOL)isInGroup
+{
+    objc_setAssociatedObject(self, CAAnimationIsInGroupKey, @(isInGroup), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)isInGroup
+{
+    NSNumber *isInGroup = objc_getAssociatedObject(self, CAAnimationIsInGroupKey);
+    return [isInGroup boolValue];
+}
+
 - (id)copyWithZoneAddition:(NSZone *)zone
 {
     CAAnimation *animation = [self copyWithZoneAddition: zone];
     animation.finishCallBack = self.finishCallBack;
+    animation.isInGroup = self.isInGroup;
     return animation;
 }
 

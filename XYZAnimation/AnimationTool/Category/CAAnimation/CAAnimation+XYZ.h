@@ -14,6 +14,7 @@ typedef void (^XYZCAAnimationFinishBlock)();
 @interface CAAnimation(XYZ)
 
 @property (nonatomic, copy) XYZCAAnimationFinishBlock finishCallBack;
+@property (nonatomic, assign) BOOL isInGroup;
 
 - (CAAnimation *(^)(CFTimeInterval))    beginAtTime;
 - (CAAnimation *(^)(CFTimeInterval))    inDuration;
