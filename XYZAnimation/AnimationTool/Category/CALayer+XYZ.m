@@ -47,19 +47,20 @@ static void *AnimationArrayKey = "kAnimationArrayKey";
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    if(anim.finishCallBack)
+    {
+        anim.finishCallBack();
+    }
+    
     if(self.animations.count == 0)
     {
         return;
     }
     
     NSInteger index = self.animations.count;
-    NSString *animationKey = [NSString stringWithFormat: @"Animation%ld", index];
+    NSString *animationKey = [NSString stringWithFormat: @"Animation%ld", (long)index];
     [self addAnimation:self.animations[0] forKey:animationKey];
     [self.animations removeObjectAtIndex: 0];
-    if(anim.finishCallBack)
-    {
-        anim.finishCallBack();
-    }
 }
 
 - (NSMutableArray *)animations
