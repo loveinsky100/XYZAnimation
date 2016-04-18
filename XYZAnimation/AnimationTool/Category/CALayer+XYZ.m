@@ -49,6 +49,11 @@ static void *AnimationArrayKey = "kAnimationArrayKey";
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
+    if(!flag)
+    {
+        return;
+    }
+    
     if(anim.finishCallBack)
     {
         anim.finishCallBack();
