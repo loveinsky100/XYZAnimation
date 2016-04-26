@@ -10,6 +10,7 @@
 #import "XYZAnimation.h"
 
 @interface ViewController ()
+
 @end
 
 @implementation ViewController
@@ -54,10 +55,10 @@
              .withAutoreverses(NO)
              .withFillMode(kCAFillModeForwards)
              .andRemoveOnCompletion(NO)
-        .withFinishCallBack(^(){ NSLog(@"group all finish"); });;
+             .withFinishCallBack(^(){ NSLog(@"group all finish"); });;
         
         maker.basicAnimation
-             .from(@0)
+             .from(@1)
              .to(@10)
              .withKeyPath(@"lineWidth")
              .inDuration(2)
@@ -73,6 +74,25 @@
              .withAutoreverses(NO)
              .withFillMode(kCAFillModeForwards)
              .andRemoveOnCompletion(NO);
+        
+        maker.startGroup
+        .inDuration(3)
+        .withAutoreverses(NO)
+        .withFillMode(kCAFillModeForwards)
+        .andRemoveOnCompletion(NO)
+        .withFinishCallBack(^(){ NSLog(@"group all finish"); });;
+        
+        maker.basicAnimation
+            .from(@1)
+            .to(@10)
+            .withKeyPath(@"lineWidth")
+            .inDuration(2)
+            .withAutoreverses(NO)
+            .withFillMode(kCAFillModeForwards)
+            .andRemoveOnCompletion(NO)
+            .withFinishCallBack(^(){ NSLog(@"group2 firstAnimation finish"); });
+        
+        maker.endGroup();
         
         maker.endGroup();
         

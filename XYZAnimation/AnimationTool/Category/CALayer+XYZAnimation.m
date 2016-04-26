@@ -72,6 +72,17 @@ static void *AnimationArrayKey = "kAnimationArrayKey";
     [self.animations removeObjectAtIndex: 0];
 }
 
+- (void)startXYZAnimation:(CAAnimation *)animation forKey:(NSString *)animationKey
+{
+    if(animation.startCallBack)
+    {
+        animation.startCallBack();
+    }
+    
+    [self addAnimation:animation
+                forKey:animationKey];
+}
+
 - (void)addXYZAnimation:(CAAnimation *)animation forKey:(NSString *)animationKey
 {
     if([animation isKindOfClass: [CAAnimationGroup class]]
@@ -84,8 +95,8 @@ static void *AnimationArrayKey = "kAnimationArrayKey";
     }
     else
     {
-        [self addAnimation:animation
-                    forKey:animationKey];
+        [self startXYZAnimation:animation
+                         forKey:animationKey];
     }
 }
 
@@ -95,8 +106,8 @@ static void *AnimationArrayKey = "kAnimationArrayKey";
             forBaseKey:animationKey];
     
     animationGroup.animations = nil;
-    [self addAnimation:animationGroup
-                forKey:animationKey];
+    [self startXYZAnimation:animationGroup
+                     forKey:animationKey];
 }
 
 - (void)addAnimtions:(NSArray<CAAnimation *> *)animations forBaseKey:(NSString *)baseKey
@@ -106,8 +117,8 @@ static void *AnimationArrayKey = "kAnimationArrayKey";
         NSInteger index = [animations indexOfObject: animation];
         NSString *animationKey = [NSString stringWithFormat:@"%@-inGroup-%ld", baseKey, (long)index];
         animation.isInGroup = YES;
-        [self addAnimation: animation
-                    forKey: animationKey];
+        [self startXYZAnimation: animation
+                         forKey: animationKey];
     }
 }
 

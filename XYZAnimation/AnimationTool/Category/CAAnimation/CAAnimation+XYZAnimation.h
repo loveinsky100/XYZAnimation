@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef void (^XYZCAAnimationFinishBlock)();
+typedef void (^XYZCAAnimationStateBlock)();
 
 @interface CAAnimation(XYZAnimation)
 
-@property (nonatomic, copy) XYZCAAnimationFinishBlock finishCallBack;
+@property (nonatomic, copy) XYZCAAnimationStateBlock startCallBack;
+@property (nonatomic, copy) XYZCAAnimationStateBlock finishCallBack;
 @property (nonatomic, assign) BOOL isInGroup;
 
 - (CAAnimation *(^)(CFTimeInterval))    beginAtTime;
@@ -26,5 +27,6 @@ typedef void (^XYZCAAnimationFinishBlock)();
 - (CAAnimation *(^)(NSString *))        withFillMode;
 - (CAAnimation *(^)(id))                withDelegate;
 - (CAAnimation *(^)(BOOL))              andRemoveOnCompletion;
-- (CAAnimation *(^)(XYZCAAnimationFinishBlock))withFinishCallBack;
+- (CAAnimation *(^)(XYZCAAnimationStateBlock))withFinishCallBack;
+- (CAAnimation *(^)(XYZCAAnimationStateBlock))withStartCallBack;
 @end

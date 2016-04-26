@@ -9,8 +9,9 @@
 #import "CAAnimation+XYZAnimation.h"
 #import "objc/runtime.h"
 
-static void *CAAnimationFinishCallBackKey = "kCAAnimationFinishCallBackKey";
-static void *CAAnimationIsInGroupKey = "kCAAnimationIsInGroupKey";
+static void *CAAnimationFinishCallBackKey   = "kCAAnimationFinishCallBackKey";
+static void *CAAnimationStartCallBackKey    = "kCAAnimationStartCallBackKey";
+static void *CAAnimationIsInGroupKey        = "kCAAnimationIsInGroupKey";
 
 @implementation CAAnimation(XYZAnimation)
 - (CAAnimation *(^)(CFTimeInterval))beginAtTime
@@ -93,30 +94,52 @@ static void *CAAnimationIsInGroupKey = "kCAAnimationIsInGroupKey";
     };
 }
 
-- (CAAnimation *(^)(XYZCAAnimationFinishBlock))withFinishCallBack
+- (CAAnimation *(^)(XYZCAAnimationStateBlock))withFinishCallBack
 {
-    return ^(XYZCAAnimationFinishBlock finishCallBack){
+    return ^(XYZCAAnimationStateBlock finishCallBack){
         self.finishCallBack = finishCallBack;
-        
-        static dispatch_once_t xyzDispatchT;
-        dispatch_once(&xyzDispatchT, ^{
-            Method realCopy = class_getInstanceMethod([self class], @selector(copyWithZone:));
-            Method xyzCopy = class_getInstanceMethod([self class], @selector(copyWithZoneAddition:));
-            method_exchangeImplementations(realCopy, xyzCopy);
-        });
-        
+        [self changeXYZAnimationCopy];
         return self;
     };
 }
 
-- (XYZCAAnimationFinishBlock)finishCallBack
+- (CAAnimation *(^)(XYZCAAnimationStateBlock))withStartCallBack
+{
+    return ^(XYZCAAnimationStateBlock startCallBack){
+        self.startCallBack = startCallBack;
+        [self changeXYZAnimationCopy];
+        return self;
+    };
+}
+
+- (void)changeXYZAnimationCopy
+{
+    static dispatch_once_t xyzDispatchT;
+    dispatch_once(&xyzDispatchT, ^{
+        Method realCopy = class_getInstanceMethod([self class], @selector(copyWithZone:));
+        Method xyzCopy = class_getInstanceMethod([self class], @selector(copyWithZoneAddition:));
+        method_exchangeImplementations(realCopy, xyzCopy);
+    });
+}
+
+- (XYZCAAnimationStateBlock)finishCallBack
 {
     return objc_getAssociatedObject(self, CAAnimationFinishCallBackKey);
 }
 
-- (void)setFinishCallBack:(XYZCAAnimationFinishBlock)finishCallBack
+- (void)setFinishCallBack:(XYZCAAnimationStateBlock)finishCallBack
 {
     objc_setAssociatedObject(self, CAAnimationFinishCallBackKey, finishCallBack, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (XYZCAAnimationStateBlock)startCallBack
+{
+    return objc_getAssociatedObject(self, CAAnimationStartCallBackKey);
+}
+
+- (void)setStartCallBack:(XYZCAAnimationStateBlock)startCallBack
+{
+    objc_setAssociatedObject(self, CAAnimationFinishCallBackKey, startCallBack, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)setIsInGroup:(BOOL)isInGroup
