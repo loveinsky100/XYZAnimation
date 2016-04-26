@@ -1,5 +1,5 @@
 //
-//  CASpringAnimation+XYZ.h
+//  CASpringAnimation+XYZAnimation.h
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CASpringAnimation(XYZ)
+@interface CASpringAnimation(XYZAnimation)
 - (CASpringAnimation *(^)(CGFloat))withMass;
 - (CASpringAnimation *(^)(CGFloat))withStiffness;
 - (CASpringAnimation *(^)(CGFloat))withDamping;

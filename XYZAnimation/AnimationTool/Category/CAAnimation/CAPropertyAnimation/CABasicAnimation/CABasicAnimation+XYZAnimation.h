@@ -1,5 +1,5 @@
 //
-//  CABasicAnimation+XYZ.h
+//  CABasicAnimation+XYZAnimation.h
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CABasicAnimation(XYZ)
+@interface CABasicAnimation(XYZAnimation)
 - (CABasicAnimation *(^)(NSValue *))from;
 - (CABasicAnimation *(^)(NSValue *))to;
 - (CABasicAnimation *(^)(NSValue *))by;

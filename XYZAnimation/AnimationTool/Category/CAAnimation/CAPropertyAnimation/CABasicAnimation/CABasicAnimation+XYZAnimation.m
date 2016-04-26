@@ -1,14 +1,14 @@
 //
-//  CABasicAnimation+XYZ.m
+//  CABasicAnimation+XYZAnimation.m
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import "CABasicAnimation+XYZ.h"
+#import "CABasicAnimation+XYZAnimation.h"
 
-@implementation CABasicAnimation(XYZ)
+@implementation CABasicAnimation(XYZAnimation)
 - (CABasicAnimation *(^)(NSValue *))from
 {
     return ^(NSValue *value){

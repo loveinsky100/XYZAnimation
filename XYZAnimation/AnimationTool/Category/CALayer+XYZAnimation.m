@@ -1,18 +1,18 @@
 //
-//  CALayer+XYZ.m
+//  CALayer+XYZAnimation.m
 //  XYZAnimation
 //
 //  Created by Leo on 16/3/31.
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import "CALayer+XYZ.h"
+#import "CALayer+XYZAnimation.h"
 #import "objc/runtime.h"
-#import "CAAnimation+XYZ.h"
+#import "CAAnimation+XYZAnimation.h"
 
 static void *AnimationArrayKey = "kAnimationArrayKey";
 
-@implementation CALayer(XYZ)
+@implementation CALayer(XYZAnimation)
 
 - (void)makeCAAnimation:(void (^)(XYZAnimationMaker *))makerBlock
 {

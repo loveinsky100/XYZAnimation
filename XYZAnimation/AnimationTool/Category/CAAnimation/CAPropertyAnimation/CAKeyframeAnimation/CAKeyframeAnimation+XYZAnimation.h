@@ -1,5 +1,5 @@
 //
-//  CAKeyframeAnimation+XYZ.h
+//  CAKeyframeAnimation+XYZAnimation.h
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CAKeyframeAnimation(XYZ)
+@interface CAKeyframeAnimation(XYZAnimation)
 - (CAKeyframeAnimation *(^)(NSArray *))withValues;
 - (CAKeyframeAnimation *(^)(CGPathRef))withPath;
 - (CAKeyframeAnimation *(^)(NSArray<NSNumber *> *))withKeyTimes;

@@ -1,14 +1,14 @@
 //
-//  CAPropertyAnimation+XYZ.m
+//  CAPropertyAnimation+XYZAnimation.m
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import "CAPropertyAnimation+XYZ.h"
+#import "CAPropertyAnimation+XYZAnimation.h"
 
-@implementation CAPropertyAnimation(XYZ)
+@implementation CAPropertyAnimation(XYZAnimation)
 - (CAPropertyAnimation * (^)(NSString *))withKeyPath
 {
     return ^(NSString *keyPath){

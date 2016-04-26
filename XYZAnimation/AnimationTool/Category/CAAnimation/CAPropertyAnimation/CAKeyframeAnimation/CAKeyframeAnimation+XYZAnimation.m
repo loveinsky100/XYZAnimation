@@ -1,14 +1,14 @@
 //
-//  CAKeyframeAnimation+XYZ.m
+//  CAKeyframeAnimation+XYZAnimation.m
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import "CAKeyframeAnimation+XYZ.h"
+#import "CAKeyframeAnimation+XYZAnimation.h"
 
-@implementation CAKeyframeAnimation(XYZ)
+@implementation CAKeyframeAnimation(XYZAnimation)
 - (CAKeyframeAnimation *(^)(NSArray *))withValues
 {
     return ^(NSArray *values){

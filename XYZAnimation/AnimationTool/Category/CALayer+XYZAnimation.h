@@ -1,5 +1,5 @@
 //
-//  CALayer+XYZ.h
+//  CALayer+XYZAnimation.h
 //  XYZAnimation
 //
 //  Created by Leo on 16/3/31.
@@ -10,6 +10,6 @@
 #import <UIKit/UIKit.h>
 #import "XYZAnimationMaker.h"
 
-@interface CALayer(XYZ)
+@interface CALayer(XYZAnimation)
 - (void)makeCAAnimation:(void (^)(XYZAnimationMaker *maker))makerBlock;
 @end

@@ -1,5 +1,5 @@
 //
-//  CAAnimationGroup+XYZ.h
+//  CAAnimationGroup+XYZAnimation.h
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CAAnimationGroup(XYZ)
+@interface CAAnimationGroup(XYZAnimation)
 - (void)addAnimation:(CAAnimation *)animation;
 - (void)joinAnimationIntoGroup;
 - (CAAnimationGroup *(^)(NSArray<CAAnimation *> *))withAnimations;

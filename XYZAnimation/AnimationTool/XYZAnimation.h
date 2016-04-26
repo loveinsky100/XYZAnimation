@@ -10,13 +10,13 @@
 #define XYZAnimation_h
 
 #import "XYZAnimationMaker.h"
-#import "CAAnimation+XYZ.h"
-#import "CAAnimationGroup+XYZ.h"
-#import "CABasicAnimation+XYZ.h"
-#import "CAKeyframeAnimation+XYZ.h"
-#import "CAPropertyAnimation+XYZ.h"
-#import "CASpringAnimation+XYZ.h"
-#import "CATransition+XYZ.h"
-#import "CALayer+XYZ.h"
+#import "CAAnimation+XYZAnimation.h"
+#import "CAAnimationGroup+XYZAnimation.h"
+#import "CABasicAnimation+XYZAnimation.h"
+#import "CAKeyframeAnimation+XYZAnimation.h"
+#import "CAPropertyAnimation+XYZAnimation.h"
+#import "CASpringAnimation+XYZAnimation.h"
+#import "CATransition+XYZAnimation.h"
+#import "CALayer+XYZAnimation.h"
 
 #endif /* XYZAnimation_h */

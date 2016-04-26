@@ -1,5 +1,5 @@
 //
-//  CATransition+XYZ.h
+//  CATransition+XYZAnimation.h
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CATransition(XYZ)
+@interface CATransition(XYZAnimation)
 - (CATransition *(^)(NSString *))withType;
 - (CATransition *(^)(NSString *))withSubtype;
 - (CATransition *(^)(float))withStartProgress;

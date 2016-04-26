@@ -1,14 +1,14 @@
 //
-//  CATransition+XYZ.m
+//  CATransition+XYZAnimation.m
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import "CATransition+XYZ.h"
+#import "CATransition+XYZAnimation.h"
 
-@implementation CATransition(XYZ)
+@implementation CATransition(XYZAnimation)
 - (CATransition *(^)(NSString *))withType
 {
     return ^(NSString *type){

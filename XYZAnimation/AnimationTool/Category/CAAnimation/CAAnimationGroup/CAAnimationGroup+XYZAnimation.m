@@ -1,17 +1,17 @@
 //
-//  CAAnimationGroup+XYZ.m
+//  CAAnimationGroup+XYZAnimation.m
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import "CAAnimationGroup+XYZ.h"
+#import "CAAnimationGroup+XYZAnimation.h"
 #import "objc/runtime.h"
 
 static void *CAAnimationGroupArray = "kCAAnimationGroupArray";
 
-@implementation CAAnimationGroup(XYZ)
+@implementation CAAnimationGroup(XYZAnimation)
 - (CAAnimationGroup *(^)(NSArray<CAAnimation *> *))withAnimations
 {
     return ^(NSArray<CAAnimation *> *animations){

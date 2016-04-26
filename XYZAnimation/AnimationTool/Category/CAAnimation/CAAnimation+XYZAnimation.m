@@ -1,18 +1,18 @@
 //
-//  CAAnimation+XYZ.m
+//  CAAnimation+XYZAnimation.m
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import "CAAnimation+XYZ.h"
+#import "CAAnimation+XYZAnimation.h"
 #import "objc/runtime.h"
 
 static void *CAAnimationFinishCallBackKey = "kCAAnimationFinishCallBackKey";
 static void *CAAnimationIsInGroupKey = "kCAAnimationIsInGroupKey";
 
-@implementation CAAnimation(XYZ)
+@implementation CAAnimation(XYZAnimation)
 - (CAAnimation *(^)(CFTimeInterval))beginAtTime
 {
     return ^(CFTimeInterval time){

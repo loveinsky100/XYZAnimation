@@ -1,14 +1,14 @@
 //
-//  CASpringAnimation+XYZ.m
+//  CASpringAnimation+XYZAnimation.m
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
 //  Copyright © 2016年 Leo. All rights reserved.
 //
 
-#import "CASpringAnimation+XYZ.h"
+#import "CASpringAnimation+XYZAnimation.h"
 
-@implementation CASpringAnimation(XYZ)
+@implementation CASpringAnimation(XYZAnimation)
 
 - (CASpringAnimation *(^)(CGFloat))withMass
 {

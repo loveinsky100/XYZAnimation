@@ -1,5 +1,5 @@
 //
-//  CAAnimation+XYZ.h
+//  CAAnimation+XYZAnimation.h
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
@@ -11,7 +11,7 @@
 
 typedef void (^XYZCAAnimationFinishBlock)();
 
-@interface CAAnimation(XYZ)
+@interface CAAnimation(XYZAnimation)
 
 @property (nonatomic, copy) XYZCAAnimationFinishBlock finishCallBack;
 @property (nonatomic, assign) BOOL isInGroup;

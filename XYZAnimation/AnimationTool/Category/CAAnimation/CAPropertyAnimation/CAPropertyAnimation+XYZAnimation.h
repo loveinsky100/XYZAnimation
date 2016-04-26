@@ -1,5 +1,5 @@
 //
-//  CAPropertyAnimation+XYZ.h
+//  CAPropertyAnimation+XYZAnimation.h
 //  XYZAnimation
 //
 //  Created by Leo on 16/4/1.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CAPropertyAnimation(XYZ)
+@interface CAPropertyAnimation(XYZAnimation)
 - (CAPropertyAnimation * (^)(NSString *))   withKeyPath;
 - (CAPropertyAnimation * (^)(BOOL))         andAdditive;
 - (CAPropertyAnimation * (^)(BOOL))         andCumulative;
