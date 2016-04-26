@@ -46,43 +46,18 @@
     CGPoint toPoint = CGPointMake(30, 360);
     [movePath addQuadCurveToPoint:toPoint
                      controlPoint:CGPointMake(300,0)];
-    [cirleLayer makeCAAnimation:^(XYZAnimationMaker *maker) {
-        maker.addAnimation(animation)
-             .withFinishCallBack(^(){ NSLog(@"strokeEnd finish"); });
+    [cirleLayer makeCAAnimation:^(XYZAnimationMaker *make) {
+        make.addAnimation(animation)
+            .withFinishCallBack(^(){ NSLog(@"strokeEnd finish"); });
         
-        maker.startGroup
-             .inDuration(3)
-             .withAutoreverses(NO)
-             .withFillMode(kCAFillModeForwards)
-             .andRemoveOnCompletion(NO)
-             .withFinishCallBack(^(){ NSLog(@"group all finish"); });;
+        make.startGroup
+            .inDuration(3)
+            .withAutoreverses(NO)
+            .withFillMode(kCAFillModeForwards)
+            .andRemoveOnCompletion(NO)
+            .withFinishCallBack(^(){ NSLog(@"group all finish"); });;
         
-        maker.basicAnimation
-             .from(@1)
-             .to(@10)
-             .withKeyPath(@"lineWidth")
-             .inDuration(2)
-             .withAutoreverses(NO)
-             .withFillMode(kCAFillModeForwards)
-             .andRemoveOnCompletion(NO)
-             .withFinishCallBack(^(){ NSLog(@"group firstAnimation finish"); });
-        
-        maker.keyframeAnimation
-             .withPath(movePath.CGPath)
-             .withKeyPath(@"position")
-             .inDuration(3)
-             .withAutoreverses(NO)
-             .withFillMode(kCAFillModeForwards)
-             .andRemoveOnCompletion(NO);
-        
-        maker.startGroup
-        .inDuration(3)
-        .withAutoreverses(NO)
-        .withFillMode(kCAFillModeForwards)
-        .andRemoveOnCompletion(NO)
-        .withFinishCallBack(^(){ NSLog(@"group all finish"); });;
-        
-        maker.basicAnimation
+        make.basicAnimation
             .from(@1)
             .to(@10)
             .withKeyPath(@"lineWidth")
@@ -90,20 +65,46 @@
             .withAutoreverses(NO)
             .withFillMode(kCAFillModeForwards)
             .andRemoveOnCompletion(NO)
-            .withFinishCallBack(^(){ NSLog(@"group2 firstAnimation finish"); });
+            .withFinishCallBack(^(){ NSLog(@"group firstAnimation finish"); });
         
-        maker.endGroup();
+        make.keyframeAnimation
+            .withPath(movePath.CGPath)
+            .withKeyPath(@"position")
+            .inDuration(3)
+            .withAutoreverses(NO)
+            .withFillMode(kCAFillModeForwards)
+            .andRemoveOnCompletion(NO);
         
-        maker.endGroup();
+        make.startGroup
+            .inDuration(3)
+            .withAutoreverses(NO)
+            .withFillMode(kCAFillModeForwards)
+            .andRemoveOnCompletion(NO)
+            .withFinishCallBack(^(){ NSLog(@"group2 all finish"); });;
         
-        maker.basicAnimation
-             .from(@0)
-             .to(@1)
-             .withKeyPath(@"strokeStart")
-             .inDuration(2)
-             .withAutoreverses(NO)
-             .withFillMode(kCAFillModeForwards)
-             .andRemoveOnCompletion(NO);
+        make.basicAnimation
+            .from(@1)
+            .to(@10)
+            .withKeyPath(@"lineWidth")
+            .inDuration(2)
+            .withAutoreverses(NO)
+            .withFillMode(kCAFillModeForwards)
+            .andRemoveOnCompletion(NO)
+            .withFinishCallBack(^(){ NSLog(@"group2 firstAnimation finish"); })
+            .withStartCallBack(^(){NSLog(@"group2 firstAnimation start");});
+        
+        make.endGroup();
+        
+        make.endGroup();
+        
+        make.basicAnimation
+            .from(@0)
+            .to(@1)
+            .withKeyPath(@"strokeStart")
+            .inDuration(2)
+            .withAutoreverses(NO)
+            .withFillMode(kCAFillModeForwards)
+            .andRemoveOnCompletion(NO);
     }];
 }
 

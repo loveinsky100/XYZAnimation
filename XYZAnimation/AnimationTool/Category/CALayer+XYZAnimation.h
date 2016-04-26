@@ -11,5 +11,5 @@
 #import "XYZAnimationMaker.h"
 
 @interface CALayer(XYZAnimation)
-- (void)makeCAAnimation:(void (^)(XYZAnimationMaker *maker))makerBlock;
+- (void)makeCAAnimation:(void (^)(XYZAnimationMaker *make))makerBlock;
 @end

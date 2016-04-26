@@ -139,7 +139,7 @@ static void *CAAnimationIsInGroupKey        = "kCAAnimationIsInGroupKey";
 
 - (void)setStartCallBack:(XYZCAAnimationStateBlock)startCallBack
 {
-    objc_setAssociatedObject(self, CAAnimationFinishCallBackKey, startCallBack, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, CAAnimationStartCallBackKey, startCallBack, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)setIsInGroup:(BOOL)isInGroup
