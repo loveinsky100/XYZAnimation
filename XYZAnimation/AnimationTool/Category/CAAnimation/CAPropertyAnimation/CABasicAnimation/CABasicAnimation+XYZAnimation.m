@@ -9,17 +9,17 @@
 #import "CABasicAnimation+XYZAnimation.h"
 
 @implementation CABasicAnimation(XYZAnimation)
-- (CABasicAnimation *(^)(NSValue *))from
+- (CABasicAnimation *(^)(id))from
 {
-    return ^(NSValue *value){
+    return ^(id value){
         self.fromValue = value;
         return self;
     };
 }
 
-- (CABasicAnimation *(^)(NSValue *))to
+- (CABasicAnimation *(^)(id))to
 {
-    return ^(NSValue *value){
+    return ^(id value){
         self.toValue = value;
         return self;
     };

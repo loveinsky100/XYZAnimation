@@ -22,7 +22,9 @@ static void *AnimationArrayKey = "kAnimationArrayKey";
     }
     
     [self.animations removeAllObjects];
+    [self removeAllAnimations];
     XYZAnimationMaker *maker = [[XYZAnimationMaker alloc] initWithLayer: self];
+    
     makerBlock(maker);
     self.animations = maker.animations;
     [self showAnimations];

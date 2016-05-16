@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CABasicAnimation(XYZAnimation)
-- (CABasicAnimation *(^)(NSValue *))from;
-- (CABasicAnimation *(^)(NSValue *))to;
-- (CABasicAnimation *(^)(NSValue *))by;
+- (CABasicAnimation *(^)(id))from;
+- (CABasicAnimation *(^)(id))to;
+- (CABasicAnimation *(^)(id))by;
 @end

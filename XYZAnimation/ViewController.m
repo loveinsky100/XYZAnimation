@@ -10,25 +10,28 @@
 #import "XYZAnimation.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) CAShapeLayer *circleLayer;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-    CAShapeLayer *cirleLayer = [[CAShapeLayer alloc] init];
+   
+    _circleLayer = [[CAShapeLayer alloc] init];
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(600, 300)
                                                         radius:100
                                                     startAngle:3 * M_PI_2
                                                       endAngle:M_PI * 2 + 3 * M_PI_2
                                                      clockwise:YES];
-    cirleLayer.path = path.CGPath;
-    cirleLayer.fillColor = [UIColor clearColor].CGColor;
-    cirleLayer.strokeColor = [UIColor blueColor].CGColor;
-    [self.view.layer addSublayer: cirleLayer];
+    _circleLayer.path = path.CGPath;
+    _circleLayer.fillColor = [UIColor clearColor].CGColor;
+    _circleLayer.strokeColor = [UIColor blueColor].CGColor;
+    [self.view.layer addSublayer: _circleLayer];
+
+}
+
+- (IBAction)startAnimation:(id)sender {
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     animation.fromValue = @0;
@@ -38,74 +41,72 @@
     animation.autoreverses = NO;
     animation.removedOnCompletion = NO;
     animation.delegate = self;
-
+    
     //路径曲线
-    CGPoint fromPoint = cirleLayer.frame.origin;
+    CGPoint fromPoint = _circleLayer.frame.origin;
     UIBezierPath *movePath = [UIBezierPath bezierPath];
     [movePath moveToPoint:fromPoint];
     CGPoint toPoint = CGPointMake(30, 360);
     [movePath addQuadCurveToPoint:toPoint
                      controlPoint:CGPointMake(300,0)];
-    [cirleLayer makeCAAnimation:^(XYZAnimationMaker *make) {
+    
+    
+    CGColorRef originColor = [UIColor redColor].CGColor;
+    CGColorRef darkGray = [UIColor greenColor].CGColor;
+    
+    [_circleLayer makeCAAnimation:^(XYZAnimationMaker *make) {
         make.addAnimation(animation)
-            .withFinishCallBack(^(){ NSLog(@"strokeEnd finish"); });
+        .withFinishCallBack(^(){ NSLog(@"strokeEnd finish"); });
         
         make.startGroup
-            .inDuration(3)
-            .withAutoreverses(NO)
-            .withFillMode(kCAFillModeForwards)
-            .andRemoveOnCompletion(NO)
-            .withFinishCallBack(^(){ NSLog(@"group all finish"); });;
+        .inDuration(3)
+        .withAutoreverses(NO)
+        .withFillMode(kCAFillModeForwards)
+        .andRemoveOnCompletion(NO)
+        .withFinishCallBack(^(){ NSLog(@"group all finish"); });;
         
         make.basicAnimation
-            .from(@1)
-            .to(@10)
-            .withKeyPath(@"lineWidth")
-            .inDuration(2)
-            .withAutoreverses(NO)
-            .withFillMode(kCAFillModeForwards)
-            .andRemoveOnCompletion(NO)
-            .withFinishCallBack(^(){ NSLog(@"group firstAnimation finish"); });
-        
-        make.keyframeAnimation
-            .withPath(movePath.CGPath)
-            .withKeyPath(@"position")
-            .inDuration(3)
-            .withAutoreverses(NO)
-            .withFillMode(kCAFillModeForwards)
-            .andRemoveOnCompletion(NO);
-        
-        make.startGroup
-            .inDuration(3)
-            .withAutoreverses(NO)
-            .withFillMode(kCAFillModeForwards)
-            .andRemoveOnCompletion(NO)
-            .withFinishCallBack(^(){ NSLog(@"group2 all finish"); });;
+        .from(@1)
+        .to(@20)
+        .withKeyPath(@"lineWidth")
+        .inDuration(2)
+        .andRepeatCount(NSIntegerMax)
+        .withAutoreverses(YES)
+        .withFillMode(kCAFillModeForwards)
+        .andRemoveOnCompletion(NO)
+        .withFinishCallBack(^(){ NSLog(@"group firstAnimation finish"); });
         
         make.basicAnimation
-            .from(@1)
-            .to(@10)
-            .withKeyPath(@"lineWidth")
-            .inDuration(2)
-            .withAutoreverses(NO)
-            .withFillMode(kCAFillModeForwards)
-            .andRemoveOnCompletion(NO)
-            .withFinishCallBack(^(){ NSLog(@"group2 firstAnimation finish"); })
-            .withStartCallBack(^(){NSLog(@"group2 firstAnimation start");});
+        .from((__bridge id)(originColor))
+        .to((__bridge id)(darkGray))
+        .withKeyPath(@"strokeColor")
+        .inDuration(2)
+        .andRepeatCount(NSIntegerMax)
+        .withAutoreverses(YES)
+        .withFillMode(kCAFillModeForwards)
+        .andRemoveOnCompletion(NO)
+        .withFinishCallBack(^(){ NSLog(@"group firstAnimation finish"); });
+        
+//        make.keyframeAnimation
+//        .withPath(movePath.CGPath)
+//        .withKeyPath(@"position")
+//        .inDuration(3)
+//        .withAutoreverses(NO)
+//        .withFillMode(kCAFillModeForwards)
+//        .andRemoveOnCompletion(NO);
         
         make.endGroup();
         
-        make.endGroup();
-        
-        make.basicAnimation
-            .from(@0)
-            .to(@1)
-            .withKeyPath(@"strokeStart")
-            .inDuration(2)
-            .withAutoreverses(NO)
-            .withFillMode(kCAFillModeForwards)
-            .andRemoveOnCompletion(NO);
+//        make.basicAnimation
+//        .from(@0)
+//        .to(@1)
+//        .withKeyPath(@"strokeStart")
+//        .inDuration(2)
+//        .withAutoreverses(NO)
+//        .withFillMode(kCAFillModeForwards)
+//        .andRemoveOnCompletion(NO);
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
